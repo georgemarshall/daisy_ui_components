@@ -32,7 +32,10 @@ defmodule DaisyUIComponents.Button do
   attr :wide, :boolean, default: false
   attr :block, :boolean, default: false
   attr :shape, :string, values: ~w(circle square)
-  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.button()
+  attr :rest, :global,
+    include:
+      ~w(autofocus disabled download form formaction formenctype formmethod formnovalidate formtarget
+         href hreflang method name navigate patch ping referrerpolicy rel target type value)
   slot :inner_block, required: true
 
   def button(%{rest: rest} = assigns) do

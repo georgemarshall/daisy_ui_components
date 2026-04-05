@@ -14,7 +14,12 @@ defmodule DaisyUIComponents.Range do
   attr :min, :integer, default: nil
   attr :max, :integer, default: nil
   attr :step, :integer, default: nil
-  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.input()
+  attr :rest, :global,
+    include:
+      ~w(accept alt autocomplete autofocus capture checked dirname disabled enterkeyhint form
+         formaction formenctype formmethod formnovalidate formtarget height inputmode list max
+         maxlength min minlength multiple name pattern placeholder readonly required size src step
+         type value width)
 
   def range(assigns) do
     assigns =

@@ -12,7 +12,10 @@ defmodule DaisyUIComponents.Textarea do
   attr :color, :string, values: colors()
   attr :ghost, :boolean, default: false
   attr :size, :string, values: sizes()
-  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.textarea()
+  attr :rest, :global,
+    include:
+      ~w(autofocus autocomplete cols dirname disabled enterkeyhint form inputmode maxlength
+         minlength name placeholder readonly required rows wrap)
   slot :inner_block
 
   def textarea(assigns) do

@@ -28,7 +28,7 @@ defmodule DaisyUIComponents.Form do
   attr :as, :any, default: nil, doc: "the server side parameter to collect all input under"
 
   attr :rest, :global,
-    include: DaisyUIComponents.HTMLAttributes.form(),
+    include: ~w(accept-charset action autocomplete enctype method name novalidate rel target),
     doc: "the arbitrary HTML attributes to apply to the form tag"
 
   slot :inner_block, required: true
@@ -83,7 +83,12 @@ defmodule DaisyUIComponents.Form do
   attr :on_query, :any,
     doc: "the JS event to trigger when a value is searched in autocomplete inputs"
 
-  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.form_control()
+  attr :rest, :global,
+    include:
+      ~w(accept alt autocomplete autofocus capture checked cols dirname disabled enterkeyhint form
+         formaction formenctype formmethod formnovalidate formtarget height inputmode list max
+         maxlength min minlength multiple name pattern placeholder readonly required rows size src
+         step type value width wrap)
 
   slot :inner_block
 

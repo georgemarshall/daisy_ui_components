@@ -70,4 +70,54 @@ defmodule DaisyUIComponents.ButtonTest do
            <.button {assigns}>My button</.button>
            """) =~ ~s(<button class="btn no-animation">)
   end
+
+  test "button forwards standard attributes" do
+    assigns = %{}
+
+    button =
+      rendered_to_string(~H"""
+      <.button
+        type="submit"
+        form="user-form"
+        formaction="/users"
+        formenctype="multipart/form-data"
+        formmethod="post"
+        formnovalidate
+        formtarget="_blank"
+        name="save"
+        value="yes"
+        aria-label="Save"
+      >Save</.button>
+      """)
+
+    assert button =~ ~s(type="submit")
+    assert button =~ ~s(form="user-form")
+    assert button =~ ~s(formaction="/users")
+    assert button =~ ~s(formenctype="multipart/form-data")
+    assert button =~ ~s(formmethod="post")
+    assert button =~ ~s(formnovalidate)
+    assert button =~ ~s(formtarget="_blank")
+    assert button =~ ~s(name="save")
+    assert button =~ ~s(value="yes")
+    assert button =~ ~s(aria-label="Save")
+
+    link_button =
+      rendered_to_string(~H"""
+      <.button
+        href="/users"
+        target="_blank"
+        rel="noopener"
+        download
+        ping="/track"
+        referrerpolicy="no-referrer"
+      >Link</.button>
+      """)
+
+    assert link_button =~ ~s(href="/users")
+    assert link_button =~ ~s(target="_blank")
+    assert link_button =~ ~s(rel="noopener")
+    assert link_button =~ ~s(download)
+    assert link_button =~ ~s(ping="/track")
+    assert link_button =~ ~s(referrerpolicy="no-referrer")
+  end
 end

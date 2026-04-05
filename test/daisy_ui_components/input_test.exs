@@ -363,4 +363,36 @@ defmodule DaisyUIComponents.InputTest do
       end)
     end)
   end
+
+  describe "text input passthrough" do
+    test "forwards shared input attributes" do
+      assigns = %{}
+
+      ~H"""
+      <.input
+        type="text"
+        name="username"
+        form="user-form"
+        inputmode="email"
+        enterkeyhint="done"
+        minlength="3"
+        maxlength="20"
+        pattern="[a-z]+"
+        autocomplete="username"
+        placeholder="user"
+      />
+      """
+      |> parse_component()
+      |> assert_component("input")
+      |> assert_attribute("name", "username")
+      |> assert_attribute("form", "user-form")
+      |> assert_attribute("inputmode", "email")
+      |> assert_attribute("enterkeyhint", "done")
+      |> assert_attribute("minlength", "3")
+      |> assert_attribute("maxlength", "20")
+      |> assert_attribute("pattern", "[a-z]+")
+      |> assert_attribute("autocomplete", "username")
+      |> assert_attribute("placeholder", "user")
+    end
+  end
 end

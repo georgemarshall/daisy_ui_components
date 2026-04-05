@@ -12,7 +12,7 @@ defmodule DaisyUIComponents.Textarea do
   attr :color, :string, values: colors()
   attr :ghost, :boolean, default: false
   attr :size, :string, values: sizes()
-  attr :rest, :global, include: ~w(form name rows cols)
+  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.textarea()
   slot :inner_block
 
   def textarea(assigns) do

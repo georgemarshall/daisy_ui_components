@@ -98,5 +98,6 @@ defmodule DaisyUIComponents.SelectTest do
     |> assert_attribute("disabled", "disabled")
     |> assert_attribute("autofocus", "autofocus")
     |> assert_attribute("multiple", "multiple")
+    |> assert_attribute("size", nil)
   end
 end

@@ -17,6 +17,36 @@ defmodule DaisyUIComponents.FormTest do
     |> assert_text("Inputs will go here")
   end
 
+  test "simple_form forwards modern attributes" do
+    assigns = %{}
+
+    ~H"""
+    <.simple_form
+      for={%{}}
+      autocomplete="on"
+      name="user-form"
+      rel="noreferrer"
+      action="/users"
+      enctype="multipart/form-data"
+      method="post"
+      novalidate
+      target="_blank"
+      accept-charset="UTF-8"
+    >content</.simple_form>
+    """
+    |> parse_component()
+    |> assert_component("form")
+    |> assert_attribute("autocomplete", "on")
+    |> assert_attribute("name", "user-form")
+    |> assert_attribute("rel", "noreferrer")
+    |> assert_attribute("action", "/users")
+    |> assert_attribute("enctype", "multipart/form-data")
+    |> assert_attribute("method", "post")
+    |> assert_attribute("novalidate", "novalidate")
+    |> assert_attribute("target", "_blank")
+    |> assert_attribute("accept-charset", "UTF-8")
+  end
+
   test "form_input checkbox" do
     assigns = %{}
 

@@ -14,7 +14,7 @@ defmodule DaisyUIComponents.Select do
   attr :ghost, :boolean, default: false
   attr :size, :string, values: sizes()
   attr :value, :any, default: nil
-  attr :rest, :global, include: ~w(autofocus disabled form multiple name required)
+  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.select()
   slot :inner_block
 
   def select(assigns) do

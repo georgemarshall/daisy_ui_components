@@ -12,7 +12,7 @@ defmodule DaisyUIComponents.Toggle do
   attr :value, :any, default: nil
   attr :color, :string, values: colors()
   attr :size, :string, values: sizes()
-  attr :rest, :global, include: ~w(form name)
+  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.input()
 
   def toggle(assigns) do
     assigns =

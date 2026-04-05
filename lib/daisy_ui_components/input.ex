@@ -49,9 +49,7 @@ defmodule DaisyUIComponents.Input do
   attr :on_query, :any,
     doc: "the JS event to trigger when a value is searched in autocomplete inputs"
 
-  attr :rest, :global,
-    include: ~w(autocomplete cols disabled form list max maxlength min minlength
-                pattern placeholder readonly required rows size step)
+  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.form_control()
 
   slot :inner_block
 

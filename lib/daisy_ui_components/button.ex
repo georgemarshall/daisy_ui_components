@@ -32,7 +32,7 @@ defmodule DaisyUIComponents.Button do
   attr :wide, :boolean, default: false
   attr :block, :boolean, default: false
   attr :shape, :string, values: ~w(circle square)
-  attr :rest, :global, include: ~w(form href navigate patch method download name value disabled)
+  attr :rest, :global, include: DaisyUIComponents.HTMLAttributes.button()
   slot :inner_block, required: true
 
   def button(%{rest: rest} = assigns) do
